@@ -60,7 +60,7 @@ const createdrop = () => {
 const setbanner = (msg, x, y) => {
 	document.querySelector('#banner span').innerText = msg;
 	let textwidth = document.querySelector('#banner span').offsetWidth;
-	if (x + textwidth > screen.width) { x = screen.width - textwidth - 10;}
+	if (x + textwidth > screen.width) { x = screen.width - textwidth - 50;}
 	document.querySelector('#banner').style.top = y + "px";
 	document.querySelector('#banner').style.left = x + "px";
 }
