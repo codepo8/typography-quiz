@@ -1,3 +1,4 @@
+(function(){
 const information = {
 	'e1': 'tittle', 'e2': 'shoulder', 'e3': 'aperture', 'e4': 'stem',
 	'e5': 'spur', 'e6': 'axis', 'e7': 'shoulder', 'e8': 'ascender', 'e9': 'descender',
@@ -24,24 +25,25 @@ const setbanner = (msg, x, y) => {
 	banner.style.left = x + "px";
 }
 
-const setEventHandlers = () => {
+const seteventhandlers = () => {
 	let elements = document.querySelector('#elements');
 	elements.addEventListener('click', handleselect);
+	let form = document.querySelector('form');
+	form.addEventListener('submit', chosentype);
 }
-	const handleselect = (ev) => {
-	console.log(ev);
-	if (ev.target.nodeName.toLowerCase() === 'path' || 
-				ev.target.nodeName.toLowerCase() === 'polygon' ||
-				ev.target.nodeName.toLowerCase() === 'g' ) {
-			setbanner((information[ev.target.id]), ev.pageX, ev.pageY);
-			ev.preventDefault();
+const chosentype = (ev) => {
+	let selected = document.querySelector('select').value;
+	ev.preventDefault();
+}
+const handleselect = (ev) => {
+	if (['path','polygon','g'].indexOf(ev.target.nodeName.toLowerCase()) !== -1){
+		setbanner((information[ev.target.id]), ev.pageX, ev.pageY);
+		ev.preventDefault();
 	}
 };
 const init = () => {
 	createdrop();
-	setEventHandlers();
+	seteventhandlers();
 }
 init();
-
-
-
+})();
